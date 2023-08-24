@@ -5,6 +5,22 @@ const noteInput = document.querySelector("#note-content");
 const addNoteBtn = document.querySelector(".add-note");
 
 // funcoes
+
+function searchNotes(texto){
+    if(texto.length >= 3){
+        const notes = document.querySelectorAll(".note");
+        notes.forEach((note) => {
+            let noteText = note.querySelector("textarea");
+            if(!noteText.value.includes(texto)){
+                note.style.display = "none";
+            }
+        });
+        return;
+    }
+    
+    showNotes();
+}
+
 function addNote(){
     const notes = getNotes();
     const noteObject = {
